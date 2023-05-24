@@ -14,7 +14,7 @@ export default function App() {
 			dispatch(setUser(user))
 		});
 		getBoards()
-			.then((data) => dispatch(setBoards(data)))
+			.then((data) => dispatch(setBoards(data || {})))
 		;
 	}, [dispatch]);
 	return (
