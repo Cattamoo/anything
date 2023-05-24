@@ -2,13 +2,13 @@ import React from 'react';
 import {useSelector} from "react-redux";
 import {RootState} from "../store/store";
 import {login, logout} from "../apis/firebase";
-import {FaSpinner} from "react-icons/fa";
+import Loading from "./common/Loading";
 
 export default function LoginUser() {
 	const user = useSelector((state: RootState) => state.auth.user);
 
 	if(user === undefined) {
-		return <FaSpinner className="my-2 mr-14 text-zinc-500 animate-spin" />
+		return <Loading className="my-2 mr-14 text-zinc-500" />
 	}
 
 	return (

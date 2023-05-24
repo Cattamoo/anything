@@ -6,6 +6,15 @@ import {
 	signOut,
 	onAuthStateChanged
 } from 'firebase/auth';
+import {
+	getDatabase,
+	ref,
+	set,
+	get,
+	remove
+} from 'firebase/database';
+import {Board} from "../types/dataType";
+import {Optional} from "../types/typeUtils";
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_FB_API_KEY,
@@ -15,6 +24,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
@@ -42,4 +52,39 @@ export function onUserStateChange(callback: Function) {
 	onAuthStateChanged(auth, async (user) => {
 		callback(user);
 	});
+}
+
+export function getBoards() {
+	return readDB('board');
+}
+
+export function createBoard(board: Board) {
+	writeDB<Board>(`board/${board.bid}`, board)
+}
+
+export function editBoard(id: string, board: Board) {
+	return writeDB<Optional<Board>>(`board/${id}`, board);
+}
+
+export function removeBoard(id: string) {
+	removeDB(`board/${id}`);
+}
+
+function readDB(path: string) {
+	return get(ref(database, path))
+		.then((snapshot) => {
+			return snapshot.val();
+		})
+		.catch(console.error)
+	;
+}
+function writeDB<T>(path: string, data: T) {
+	set(ref(database, path), data)
+		.catch(console.error)
+	;
+}
+function removeDB(path: string) {
+	remove(ref(database, path))
+		.catch(console.error)
+	;
 }
