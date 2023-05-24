@@ -1,10 +1,10 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {Post} from "../../types/dataType";
+import {PostsState} from "../../types/dataType";
 import {v4 as uuid} from "uuid";
 import moment from "moment";
 import {createPost as cp, editPost as ep, removePost as rp} from "../../apis/firebase";
 
-const initialState: { [bid: string]: { [id: string]: Post } } = {};
+const initialState: PostsState = {};
 
 const postSlicer = createSlice({
 	name: 'posts',

@@ -1,9 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {createBoard as cb, editBoard as eb, removeBoard as rb} from "../../apis/firebase";
-import {Board} from "../../types/dataType";
+import {BoardsState} from "../../types/dataType";
 import {v4 as uuid} from "uuid";
 
-const initialState: { [id: string]: Board } = {};
+const initialState: BoardsState = {};
 
 const boardSlice = createSlice({
 	name: 'boards',
