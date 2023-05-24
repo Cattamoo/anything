@@ -3,13 +3,14 @@ import {Link, useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../store/store";
 import {removePost} from "../store/reducers/postReducer";
+import UserInformation from "../components/common/UserInformation";
 import {FaArrowLeft, FaPenSquare, FaTrash} from "react-icons/fa";
 
 export default function Post() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const { bid, id } = useParams();
-	const { uid, post } = useSelector((state: RootState) => ({ uid: state.auth.user?.uid, post: state.posts[bid!][id!] }));
+	const { uid, post, users } = useSelector((state: RootState) => ({ uid: state.auth.user?.uid, post: state.posts[bid!][id!], users: state.users }));
 
 	const handleRemove = () => {
 		dispatch(removePost({ bid, pid: id }));
@@ -18,8 +19,9 @@ export default function Post() {
 
 	return (
 		<div>
-			<div className="relative text-center mt-4 pb-2 mb-2 shadow-[0_5px_10px_-3px_#d0d0cf]">
+			<div className="relative flex flex-col items-center mt-4 pb-2 mb-2 shadow-[0_5px_10px_-3px_#d0d0cf]">
 				<h2 className="text-xl font-bold">{post.title}</h2>
+				<UserInformation {...users[uid!]} />
 				<div className="text-xs">
 					<div>생성일자: {post.createdAt}</div>
 					<div>수정일자: {post.updatedAt}</div>
