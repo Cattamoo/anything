@@ -4,12 +4,17 @@ import {RootState} from "../store/store";
 import BoardItem from "../components/BoardItem";
 
 export default function Home() {
-	const boards = useSelector((state: RootState) => state.boards);
+	const { user, boards } = useSelector((state: RootState) => ({ user: state.auth.user, boards: state.boards }));
+
 	return (
 		<div>
 			Home
 			{
-				Object.keys(boards).map(key => <BoardItem key={key} board={boards[key]} />)
+				Object.keys(boards)
+					.filter((key) => boards[key].isPublic || boards[key].user.includes(user!.uid))
+					.map((key) => (
+						<BoardItem key={key} uid={user!.uid} board={boards[key]} />
+					))
 			}
 		</div>
 	);

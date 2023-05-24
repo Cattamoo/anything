@@ -2,6 +2,8 @@ export interface Board {
 	bid: string;
 	uid: string;
 	title: string;
+	user: string[];
+	isPublic: boolean;
 }
 
 export interface Post {

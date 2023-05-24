@@ -14,11 +14,13 @@ const boardSlice = createSlice({
 		},
 		createBoard(state, { payload }) {
 			const id = uuid();
-			const { uid, title } = payload;
+			const { uid, title, isPublic } = payload;
 			const newBoard = {
 				bid: id,
 				uid,
 				title,
+				isPublic,
+				user: [uid]
 			};
 			state[id] = newBoard;
 			cb(newBoard);
