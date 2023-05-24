@@ -29,7 +29,7 @@ const boardSlice = createSlice({
 		editBoard(state, { payload }) {
 			const { bid } = payload;
 			state[bid] = payload;
-			eb(bid, payload);
+			eb(payload);
 			return state;
 		},
 		removeBoard(state, { payload }) {

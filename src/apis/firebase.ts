@@ -62,8 +62,8 @@ export function createBoard(board: Board) {
 	writeDB<Board>(`board/${board.bid}`, board)
 }
 
-export function editBoard(id: string, board: Board) {
-	return writeDB<Optional<Board>>(`board/${id}`, board);
+export function editBoard(board: Board) {
+	writeDB<Optional<Board>>(`board/${board.bid}`, board);
 }
 
 export function removeBoard(id: string) {
