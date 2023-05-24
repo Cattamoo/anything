@@ -6,6 +6,7 @@ import {removePost} from "../store/reducers/postReducer";
 import UserInformation from "../components/common/UserInformation";
 import {FaArrowLeft, FaPenSquare, FaTrash} from "react-icons/fa";
 import Loading from "../components/common/Loading";
+import CommentWrapper from "../components/CommentWrapper";
 
 export default function Post() {
 	const navigate = useNavigate();
@@ -44,6 +45,7 @@ export default function Post() {
 								}
 							</div>
 							<p className="py-2 px-4 select-text whitespace-pre-line">{post.content}</p>
+							<CommentWrapper pid={id!} uid={uid!} />
 						</>
 					)
 					: <Loading />

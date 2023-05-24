@@ -14,7 +14,7 @@ import {
 	remove,
 	onValue
 } from 'firebase/database';
-import {Board, Post} from "../types/dataType";
+import {Board, Comment, Post} from "../types/dataType";
 import {Optional} from "../types/typeUtils";
 import store from "../store/store";
 
@@ -100,6 +100,22 @@ export function editPost(post: Post) {
 
 export function removePost(bid: string, pid: string) {
 	removeDB(`post/${bid}/${pid}`);
+}
+
+export function getComments(callback: Function) {
+	return readDB('comment', callback);
+}
+
+export function createComment(comment: Comment) {
+	writeDB<Comment>(`comment/${comment.pid}/${comment.cid}`, comment);
+}
+
+export function editComment(comment: Comment) {
+	writeDB<Optional<Comment>>(`comment/${comment.pid}/${comment.cid}`, comment);
+}
+
+export function removeComment(pid: string, cid: string) {
+	removeDB(`comment/${pid}/${cid}`);
 }
 
 function readDB(path: string, callback: Function) {
