@@ -21,7 +21,7 @@ export default function Post() {
 		<div>
 			<div className="relative flex flex-col items-center mt-4 pb-2 mb-2 shadow-[0_5px_10px_-3px_#d0d0cf]">
 				<h2 className="text-xl font-bold">{post.title}</h2>
-				<UserInformation {...users[uid!]} />
+				<UserInformation {...users[post.uid]} />
 				<div className="text-xs">
 					<div>생성일자: {post.createdAt}</div>
 					<div>수정일자: {post.updatedAt}</div>
