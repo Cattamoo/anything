@@ -5,6 +5,7 @@ import {RootState} from "../store/reducers/reducers";
 import Loading from "../components/common/Loading";
 import PostItem from "../components/PostItem";
 import {BsFilePlus} from "react-icons/bs";
+import moment from "moment/moment";
 
 export default function Board() {
 	const { id } = useParams();
@@ -29,7 +30,10 @@ export default function Board() {
 							<ul className="flex flex-col gap-2">
 								{
 									posts && (
-										Object.values(posts).map((post) => <PostItem key={post.pid} {...post} />)
+										Object
+											.values(posts)
+											.sort((a, b) => moment(a.createdAt).isBefore(b.createdAt) ? 1 : -1)
+											.map((post) => <PostItem key={post.pid} {...post} />)
 									)
 								}
 							</ul>
