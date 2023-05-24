@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import {
+	User,
 	getAuth,
 	signInWithPopup,
 	GoogleAuthProvider,
@@ -13,7 +14,7 @@ import {
 	get,
 	remove
 } from 'firebase/database';
-import {Board} from "../types/dataType";
+import {Board, Post} from "../types/dataType";
 import {Optional} from "../types/typeUtils";
 
 const firebaseConfig = {
@@ -31,11 +32,16 @@ const provider = new GoogleAuthProvider();
 
 export function login() {
 	signInWithPopup(auth, provider)
+		.then(({user}) => {
+			if(user) {
+				setUser(user);
+			}
+		})
 		.catch((error) => {
 			// Handle Errors here.
 			const errorCode = error.code;
 			const errorMessage = error.message;
-			const email = error.customData.email;
+			const email = error.email;
 			const credential = GoogleAuthProvider.credentialFromError(error);
 			console.warn(`[${errorCode}] ${errorMessage} \n\n ${email} / ${credential}`);
 		})
@@ -54,6 +60,15 @@ export function onUserStateChange(callback: Function) {
 	});
 }
 
+export function getUsers() {
+	return readDB(`user`);
+}
+
+function setUser(user: User) {
+	const { uid, displayName, photoURL, email } = user;
+	writeDB(`user/${user.uid}`, { uid, displayName, photoURL, email });
+}
+
 export function getBoards() {
 	return readDB('board');
 }
@@ -68,6 +83,22 @@ export function editBoard(board: Board) {
 
 export function removeBoard(id: string) {
 	removeDB(`board/${id}`);
+}
+
+export function getPosts() {
+	return readDB('post');
+}
+
+export function createPost(post: Post) {
+	writeDB<Post>(`post/${post.bid}/${post.pid}`, post);
+}
+
+export function editPost(post: Post) {
+	writeDB<Optional<Post>>(`post/${post.bid}/${post.pid}`, post);
+}
+
+export function removePost(bid: string, pid: string) {
+	removeDB(`post/${bid}/${pid}`);
 }
 
 function readDB(path: string) {

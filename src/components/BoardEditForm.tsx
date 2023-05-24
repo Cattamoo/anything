@@ -1,15 +1,17 @@
 import React, {FormEventHandler, useState} from 'react';
-import Input from "./ui/Input";
+import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+import Input from "./ui/Input";
 import {RootState} from "../store/store";
-import {Board} from "../types/dataType";
 import {createBoard, editBoard} from "../store/reducers/boardReducer";
+import {Board} from "../types/dataType";
 
 type Props = {
 	board?: Board;
 }
 
 export default function BoardEditForm({ board }: Props) {
+	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const user = useSelector((state: RootState) => state.auth.user);
 	const [titleText, setTitleText] = useState(board?.title || '');
@@ -18,10 +20,11 @@ export default function BoardEditForm({ board }: Props) {
 	const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
 		e.preventDefault();
 		if(board) {
-			dispatch(editBoard({ ...board, title: titleText }));
+			dispatch(editBoard({ ...board, title: titleText, isPublic }));
 		} else {
 			dispatch(createBoard({ uid: user!.uid, title: titleText, isPublic }));
 		}
+		navigate(`/`);
 	}
 
 	return (

@@ -3,6 +3,7 @@ import {useSelector} from "react-redux";
 import {RootState} from "../store/store";
 import {login, logout} from "../apis/firebase";
 import Loading from "./common/Loading";
+import UserInformation from "./common/UserInformation";
 
 export default function LoginUser() {
 	const user = useSelector((state: RootState) => state.auth.user);
@@ -14,12 +15,7 @@ export default function LoginUser() {
 	return (
 		<div className="flex items-center gap-4">
 			{
-				user && (
-					<div className="flex items-center gap-2">
-						<img className="w-8 rounded-full" src={user.photoURL} alt={user.email} />
-						<span>{user.displayName}</span>
-					</div>
-				)
+				user && <UserInformation {...user} />
 			}
 			<button className="px-4 py-1 rounded bg-amber-100 hover:bg-amber-200" onClick={user ? logout : login}>{user ? 'Logout' : 'Login'}</button>
 		</div>

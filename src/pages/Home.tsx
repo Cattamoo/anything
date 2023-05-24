@@ -10,8 +10,8 @@ export default function Home() {
 		<div>
 			Home
 			{
-				Object.keys(boards)
-					.filter((key) => boards[key].isPublic || boards[key].user.includes(user!.uid))
+				user && Object.keys(boards)
+					.filter((key) => boards[key].isPublic || boards[key].user.includes(user.uid))
 					.map((key) => (
 						<BoardItem key={key} uid={user!.uid} board={boards[key]} />
 					))

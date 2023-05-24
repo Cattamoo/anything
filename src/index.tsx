@@ -26,9 +26,9 @@ const router = createBrowserRouter(
 				{ path: '/board/:id', element: <Board /> },
 				{ path: '/board/new', element: <NewBoard /> },
 				{ path: '/board/edit/:id', element: <EditBoard /> },
-				{ path: '/post/:id', element: <Post /> },
-				{ path: '/post/new', element: <NewPost /> },
-				{ path: '/post/edit/:id', element: <EditPost /> },
+				{ path: '/post/:bid/:id', element: <Post /> },
+				{ path: '/post/new/:bid', element: <NewPost /> },
+				{ path: '/post/edit/:bid/:id', element: <EditPost /> },
 			]
 		}
 	]
