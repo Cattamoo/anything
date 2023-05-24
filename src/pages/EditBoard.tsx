@@ -3,7 +3,7 @@ import BoardEditForm from "../components/BoardEditForm";
 import {useParams} from "react-router-dom";
 import Loading from "../components/common/Loading";
 import {useSelector} from "react-redux";
-import {RootState} from "../store/store";
+import {RootState} from "../store/reducers/reducers";
 
 export default function EditBoard() {
 	const { id } = useParams();

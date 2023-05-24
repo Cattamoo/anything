@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector} from "react-redux";
-import {RootState} from "../store/store";
+import {RootState} from "../store/reducers/reducers";
 import BoardItem from "../components/BoardItem";
 
 export default function Home() {

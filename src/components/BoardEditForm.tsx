@@ -2,7 +2,7 @@ import React, {FormEventHandler, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import Input from "./ui/Input";
-import {RootState} from "../store/store";
+import {RootState} from "../store/reducers/reducers";
 import {createBoard, editBoard} from "../store/reducers/boardReducer";
 import {Board} from "../types/dataType";
 

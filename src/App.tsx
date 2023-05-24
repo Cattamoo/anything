@@ -12,18 +12,10 @@ import {setUsers} from "./store/reducers/userReducer";
 export default function App() {
 	const dispatch = useDispatch();
 	useEffect(() => {
-		onUserStateChange((user: UserType) => {
-			dispatch(setAuth(user))
-		});
-		getUsers()
-			.then((data) => dispatch(setUsers(data)))
-		;
-		getBoards()
-			.then((data) => dispatch(setBoards(data || {})))
-		;
-		getPosts()
-			.then((data) => dispatch(setPosts(data || {})))
-		;
+		onUserStateChange((user: UserType) => dispatch(setAuth(user)));
+		getUsers(setUsers);
+		getBoards(setBoards);
+		getPosts(setPosts);
 	}, [dispatch]);
 	return (
 		<>

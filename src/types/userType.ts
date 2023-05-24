@@ -5,6 +5,8 @@ export interface UserType {
 	uid: string;
 }
 
-export type UserState = {
+export type AuthState = {
 	user: UserType | undefined | null;
 }
+
+export type UsersState = { [id: string]: UserType }

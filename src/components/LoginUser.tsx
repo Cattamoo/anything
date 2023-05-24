@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector} from "react-redux";
-import {RootState} from "../store/store";
+import {RootState} from "../store/reducers/reducers";
 import {login, logout} from "../apis/firebase";
 import Loading from "./common/Loading";
 import UserInformation from "./common/UserInformation";

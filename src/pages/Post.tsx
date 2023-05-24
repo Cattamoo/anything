@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link, useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../store/store";
+import {RootState} from "../store/reducers/reducers";
 import {removePost} from "../store/reducers/postReducer";
 import UserInformation from "../components/common/UserInformation";
 import {FaArrowLeft, FaPenSquare, FaTrash} from "react-icons/fa";

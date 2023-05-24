@@ -3,7 +3,7 @@ import {Post} from "../types/dataType";
 import {Link} from "react-router-dom";
 import moment from "moment";
 import {useSelector} from "react-redux";
-import {RootState} from "../store/store";
+import {RootState} from "../store/reducers/reducers";
 import UserInformation from "./common/UserInformation";
 
 type Props = Post;

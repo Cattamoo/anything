@@ -11,11 +11,12 @@ import {
 	getDatabase,
 	ref,
 	set,
-	get,
-	remove
+	remove,
+	onValue
 } from 'firebase/database';
 import {Board, Post} from "../types/dataType";
 import {Optional} from "../types/typeUtils";
+import store from "../store/store";
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_FB_API_KEY,
@@ -60,8 +61,8 @@ export function onUserStateChange(callback: Function) {
 	});
 }
 
-export function getUsers() {
-	return readDB(`user`);
+export function getUsers(callback: Function) {
+	return readDB(`user`, callback);
 }
 
 function setUser(user: User) {
@@ -69,8 +70,8 @@ function setUser(user: User) {
 	writeDB(`user/${user.uid}`, { uid, displayName, photoURL, email });
 }
 
-export function getBoards() {
-	return readDB('board');
+export function getBoards(callback: Function) {
+	return readDB('board', callback);
 }
 
 export function createBoard(board: Board) {
@@ -85,8 +86,8 @@ export function removeBoard(id: string) {
 	removeDB(`board/${id}`);
 }
 
-export function getPosts() {
-	return readDB('post');
+export function getPosts(callback: Function) {
+	return readDB('post', callback);
 }
 
 export function createPost(post: Post) {
@@ -101,13 +102,11 @@ export function removePost(bid: string, pid: string) {
 	removeDB(`post/${bid}/${pid}`);
 }
 
-function readDB(path: string) {
-	return get(ref(database, path))
-		.then((snapshot) => {
-			return snapshot.val();
-		})
-		.catch(console.error)
-	;
+function readDB(path: string, callback: Function) {
+	onValue(ref(database, path), async (snapshot) => {
+		const data = snapshot.val();
+		store.dispatch(await callback(data));
+	});
 }
 function writeDB<T>(path: string, data: T) {
 	set(ref(database, path), data)

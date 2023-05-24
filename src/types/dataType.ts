@@ -24,3 +24,7 @@ export interface Comment {
 	updatedAt: string;
 	content: string;
 }
+
+export type BoardsState = { [id: string]: Board };
+export type PostsState = { [bid: string]: { [id: string]: Post } };
+export type CommentsState = { [pid: string]: { [id: string]: Comment } };

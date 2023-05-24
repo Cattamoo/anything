@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link, useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {RootState} from "../store/store";
+import {RootState} from "../store/reducers/reducers";
 import Loading from "../components/common/Loading";
 import PostItem from "../components/PostItem";
 import {BsFilePlus} from "react-icons/bs";

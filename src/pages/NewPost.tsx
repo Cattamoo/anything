@@ -1,7 +1,7 @@
 import React from 'react';
 import PostEditForm from "../components/PostEditForm";
 import {useSelector} from "react-redux";
-import {RootState} from "../store/store";
+import {RootState} from "../store/reducers/reducers";
 import {useParams} from "react-router-dom";
 
 export default function NewPost() {
