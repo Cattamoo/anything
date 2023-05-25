@@ -5,7 +5,7 @@ import PageLayout from "../components/layout/PageLayout";
 import BoardItem from "../components/BoardItem";
 import RequiredAuth from "../components/common/RequiredAuth";
 import EmptyList from "../components/common/EmptyList";
-import Loading from "../components/common/Loading";
+import PageLoading from "../components/common/PageLoading";
 
 export default function Home() {
 	const { user, boards } = useSelector((state: RootState) => ({ user: state.auth.user, boards: state.board.boards }));
@@ -15,7 +15,7 @@ export default function Home() {
 			<ul className="flex flex-col gap-2 mt-2">
 				{
 					user === undefined || boards === undefined
-						? <Loading />
+						? <PageLoading />
 						: user === null
 							? <RequiredAuth />
 							: Object.keys(boards).filter((key) => boards[key].isPublic || boards[key].user.includes(user.uid)).length !== 0

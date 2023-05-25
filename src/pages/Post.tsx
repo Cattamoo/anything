@@ -5,11 +5,11 @@ import {RootState} from "../store/reducers/reducers";
 import {removePost} from "../store/reducers/postReducer";
 import UserInformation from "../components/common/UserInformation";
 import {FaArrowLeft, FaPenSquare, FaTrash} from "react-icons/fa";
-import Loading from "../components/common/Loading";
 import CommentWrapper from "../components/CommentWrapper";
 import PageLayout from "../components/layout/PageLayout";
 import Title from "../components/ui/Title";
 import {removeConfirm} from "../utils/comfirm";
+import PageLoading from "../components/common/PageLoading";
 
 export default function Post() {
 	const navigate = useNavigate();
@@ -53,7 +53,7 @@ export default function Post() {
 							<CommentWrapper pid={pid!} uid={uid!} />
 						</>
 					)
-					: <Loading />
+					: <PageLoading />
 			}
 		</PageLayout>
 	);

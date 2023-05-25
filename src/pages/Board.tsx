@@ -4,11 +4,11 @@ import {useSelector} from "react-redux";
 import moment from "moment/moment";
 import {RootState} from "../store/reducers/reducers";
 import PageLayout from "../components/layout/PageLayout";
-import Loading from "../components/common/Loading";
 import Title from "../components/ui/Title";
 import PostItem from "../components/PostItem";
 import {BsFilePlus, BsPencil, BsPersonAdd} from "react-icons/bs";
 import EmptyList from "../components/common/EmptyList";
+import PageLoading from "../components/common/PageLoading";
 
 export default function Board() {
 	const { bid } = useParams();
@@ -18,7 +18,7 @@ export default function Board() {
 		<PageLayout>
 			{
 				board === undefined
-					? <Loading />
+					? <PageLoading />
 					: (
 						<>
 							<Title className="flex items-center gap-2 py-2 px-1">

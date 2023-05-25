@@ -2,7 +2,7 @@ import React from 'react';
 import {Navigate, useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {RootState} from "../store/reducers/reducers";
-import Loading from "../components/common/Loading";
+import PageLoading from "../components/common/PageLoading";
 
 type Props = {
 	children: React.ReactNode;
@@ -16,7 +16,7 @@ export default function ProtectedRouter({ children }: Props) {
 	}));
 
 	if(user === undefined || boards === undefined) {
-		return <Loading />
+		return <PageLoading />
 	}
 
 	if(!user || (bid && !(boards[bid] || (boards[bid].isPublic && boards[bid].user.includes(user.uid))))) {
