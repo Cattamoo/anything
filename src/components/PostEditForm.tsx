@@ -1,9 +1,11 @@
 import React, {FormEventHandler, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import Input from "./ui/Input";
 import {Post} from "../types/dataType";
 import {createPost, editPost} from "../store/reducers/postReducer";
+import Input from "./ui/Input";
+import TextArea from "./ui/TextArea";
+import Button from "./ui/Button";
 
 type Props = {
 	bid: string;
@@ -29,10 +31,10 @@ export default function PostEditForm({ bid, uid, post }: Props) {
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<form className="flex flex-col gap-2 mt-2 px-1" onSubmit={handleSubmit}>
 			<Input placeholder="제목" name="title" value={titleText} onChange={({target}) => setTitleText(target.value)} />
-			<textarea placeholder="내용" name="content" value={contentText} onChange={({target}) => setContentText(target.value)} />
-			<button disabled={titleText === '' && contentText === ''}>저장</button>
+			<TextArea className="h-96" placeholder="내용" name="content" value={contentText} onChange={({target}) => setContentText(target.value)} />
+			<Button disabled={titleText === '' && contentText === ''}>저장</Button>
 		</form>
 	);
 }
