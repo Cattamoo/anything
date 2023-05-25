@@ -15,6 +15,7 @@ import EditPost from "./pages/EditPost";
 
 import reportWebVitals from './reportWebVitals';
 import './index.css';
+import ProtectedRouter from "./pages/ProtectedRouter";
 
 const router = createBrowserRouter(
 	[
@@ -23,12 +24,12 @@ const router = createBrowserRouter(
 			element: <App />,
 			children: [
 				{ index: true, element: <Home /> },
-				{ path: '/board/:id', element: <Board /> },
-				{ path: '/board/new', element: <NewBoard /> },
-				{ path: '/board/edit/:id', element: <EditBoard /> },
-				{ path: '/post/:bid/:id', element: <Post /> },
-				{ path: '/post/new/:bid', element: <NewPost /> },
-				{ path: '/post/edit/:bid/:id', element: <EditPost /> },
+				{ path: '/board/:bid', element: <ProtectedRouter><Board /></ProtectedRouter> },
+				{ path: '/board/new', element: <ProtectedRouter><NewBoard /></ProtectedRouter> },
+				{ path: '/board/edit/:bid', element: <ProtectedRouter><EditBoard /></ProtectedRouter> },
+				{ path: '/post/:bid/:pid', element: <ProtectedRouter><Post /></ProtectedRouter> },
+				{ path: '/post/new/:bid', element: <ProtectedRouter><NewPost /></ProtectedRouter> },
+				{ path: '/post/edit/:bid/:pid', element: <ProtectedRouter><EditPost /></ProtectedRouter> },
 			]
 		}
 	]

@@ -13,11 +13,11 @@ import Title from "../components/ui/Title";
 export default function Post() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const { bid, id } = useParams();
-	const { uid, post, users } = useSelector((state: RootState) => ({ uid: state.auth.user?.uid, post: Object.values(state.posts).length !== 0 ? state.posts[bid!][id!] : undefined, users: state.users }));
+	const { bid, pid } = useParams();
+	const { uid, post, users } = useSelector((state: RootState) => ({ uid: state.auth.user?.uid, post: Object.values(state.posts).length !== 0 ? state.posts[bid!][pid!] : undefined, users: state.users }));
 
 	const handleRemove = () => {
-		dispatch(removePost({ bid, pid: id }));
+		dispatch(removePost({ bid, pid }));
 		navigate(`/board/${bid}`);
 	}
 
@@ -47,7 +47,7 @@ export default function Post() {
 								}
 							</div>
 							<p className="py-2 px-4 select-text whitespace-pre-line">{post.content}</p>
-							<CommentWrapper pid={id!} uid={uid!} />
+							<CommentWrapper pid={pid!} uid={uid!} />
 						</>
 					)
 					: <Loading />

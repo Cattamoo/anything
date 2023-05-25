@@ -8,14 +8,14 @@ import PageLayout from "../components/layout/PageLayout";
 import Title from "../components/ui/Title";
 
 export default function EditPost() {
-	const { bid, id } = useParams();
+	const { bid, pid } = useParams();
 	const { user, posts } = useSelector((state: RootState) => ({ user: state.auth.user, posts: state.posts }));
 	return (
 		<PageLayout>
 			<Title>게시글 수정</Title>
 			{
-				!!user && !!bid && !!id && Object.keys(posts).length !== 0
-					? <PostEditForm bid={bid} uid={user.uid} post={posts[bid][id]} />
+				!!user && !!bid && !!pid && Object.keys(posts).length !== 0
+					? <PostEditForm bid={bid} uid={user.uid} post={posts[bid][pid]} />
 					: <Loading />
 			}
 		</PageLayout>

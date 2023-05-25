@@ -8,13 +8,13 @@ import Title from "../components/ui/Title";
 import BoardEditForm from "../components/BoardEditForm";
 
 export default function EditBoard() {
-	const { id } = useParams();
+	const { bid } = useParams();
 	const boards = useSelector((state: RootState) => state.boards);
 
 	return (
 		<PageLayout>
 			<Title>게시판 수정</Title>
-			{boards[id!] ? <BoardEditForm board={boards[id!]} /> : <Loading />}
+			{boards[bid!] ? <BoardEditForm board={boards[bid!]} /> : <Loading />}
 		</PageLayout>
 	);
 }
