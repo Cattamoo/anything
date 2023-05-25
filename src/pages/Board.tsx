@@ -11,7 +11,7 @@ import {BsFilePlus, BsPencil, BsPersonAdd} from "react-icons/bs";
 
 export default function Board() {
 	const { bid } = useParams();
-	const { uid, board, posts } = useSelector((state: RootState) => ({ uid: state.auth.user?.uid, board: state.boards[bid!], posts: state.posts[bid!] }));
+	const { uid, board, posts } = useSelector((state: RootState) => ({ uid: state.auth.user?.uid, board: state.board.boards && state.board.boards[bid!], posts: state.posts[bid!] }));
 
 	return (
 		<PageLayout>

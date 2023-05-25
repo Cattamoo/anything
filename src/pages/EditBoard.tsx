@@ -9,12 +9,12 @@ import BoardEditForm from "../components/BoardEditForm";
 
 export default function EditBoard() {
 	const { bid } = useParams();
-	const boards = useSelector((state: RootState) => state.boards);
+	const boards = useSelector((state: RootState) => state.board.boards);
 
 	return (
 		<PageLayout>
 			<Title>게시판 수정</Title>
-			{boards[bid!] ? <BoardEditForm board={boards[bid!]} /> : <Loading />}
+			{boards && boards[bid!] ? <BoardEditForm board={boards[bid!]} /> : <Loading />}
 		</PageLayout>
 	);
 }

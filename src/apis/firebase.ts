@@ -121,7 +121,7 @@ export function removeComment(pid: string, cid: string) {
 function readDB(path: string, callback: Function) {
 	onValue(ref(database, path), async (snapshot) => {
 		const data = snapshot.val();
-		store.dispatch(await callback(data));
+		store.dispatch(await callback(data || {}));
 	});
 }
 function writeDB<T>(path: string, data: T) {

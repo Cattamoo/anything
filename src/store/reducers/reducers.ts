@@ -7,7 +7,7 @@ import commentReducer from "./commentReducer";
 
 export const rootReducer = combineReducers({
 	auth: authReducer,
-	boards: boardReducer,
+	board: boardReducer,
 	posts: postReducer,
 	users: userReducer,
 	comments: commentReducer,

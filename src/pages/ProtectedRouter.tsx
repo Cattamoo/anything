@@ -12,14 +12,14 @@ export default function ProtectedRouter({ children }: Props) {
 	const { bid } = useParams();
 	const { user, boards } = useSelector((state: RootState) => ({
 		user: state.auth.user,
-		boards: state.boards
+		boards: state.board.boards
 	}));
 
-	if(user === undefined || Object.values(boards).length === 0) {
+	if(user === undefined || boards === undefined) {
 		return <Loading />
 	}
 
-	if(!user || !boards[bid!] || !(boards[bid!].isPublic || boards[bid!].user.includes(user.uid))) {
+	if(!user || (bid && !(boards[bid] || (boards[bid].isPublic && boards[bid].user.includes(user.uid))))) {
 		return <Navigate to="/" replace />
 	}
 

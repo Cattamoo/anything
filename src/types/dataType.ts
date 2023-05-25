@@ -25,6 +25,6 @@ export interface Comment {
 	content: string;
 }
 
-export type BoardsState = { [id: string]: Board };
+export type BoardsState = { boards: { [id: string]: Board } | undefined };
 export type PostsState = { [bid: string]: { [id: string]: Post } };
 export type CommentsState = { [pid: string]: { [id: string]: Comment } };

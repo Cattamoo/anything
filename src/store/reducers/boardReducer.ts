@@ -3,14 +3,16 @@ import {createBoard as cb, editBoard as eb, removeBoard as rb} from "../../apis/
 import {BoardsState} from "../../types/dataType";
 import {v4 as uuid} from "uuid";
 
-const initialState: BoardsState = {};
+const initialState: BoardsState = {
+	boards: undefined
+};
 
 const boardSlice = createSlice({
 	name: 'boards',
 	initialState,
 	reducers: {
 		setBoards(state, {payload}) {
-			return payload;
+			return { boards: payload };
 		},
 		createBoard(state, { payload }) {
 			const id = uuid();
