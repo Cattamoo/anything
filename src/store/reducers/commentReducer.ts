@@ -24,24 +24,17 @@ const commentSlice = createSlice({
 				createdAt: moment().format('YYYY-MM-DD HH:mm:ss'),
 				updatedAt: moment().format('YYYY-MM-DD HH:mm:ss')
 			};
-			if(!state[pid]) {
-				state[pid] = {};
-			}
-			state[pid][id] = newComment;
 			cc(newComment);
-			return state;
 		},
 		editComment(state, { payload }) {
-			const { pid, cid } = payload;
-			state[pid][cid] = payload;
-			ec(payload);
-			return state;
+			ec({
+				...payload,
+				updatedAt: moment().format('YYYY-MM-DD HH:mm:ss')
+			});
 		},
 		removeComment(state, { payload }) {
 			const { pid, cid } = payload;
-			delete state[pid][cid];
 			rc(pid, cid);
-			return state;
 		}
 	}
 });

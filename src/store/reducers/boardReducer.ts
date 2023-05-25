@@ -22,20 +22,13 @@ const boardSlice = createSlice({
 				isPublic,
 				user: [uid]
 			};
-			state[id] = newBoard;
 			cb(newBoard);
-			return state;
 		},
 		editBoard(state, { payload }) {
-			const { bid } = payload;
-			state[bid] = payload;
 			eb(payload);
-			return state;
 		},
 		removeBoard(state, { payload }) {
-			delete state[payload.id];
 			rb(payload.id);
-			return state;
 		}
 	}
 });

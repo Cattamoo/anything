@@ -25,27 +25,17 @@ const postSlicer = createSlice({
 				updatedAt: moment().format('YYYY-MM-DD HH:mm:ss'),
 				content
 			};
-			if(!state[bid]) {
-				state[bid] = {};
-			}
-			state[bid][id] = newPost;
 			cp(newPost);
-			return state;
 		},
 		editPost(state, { payload }) {
-			const { bid, pid } = payload;
-			state[bid][pid] = {
+			ep({
 				...payload,
 				updatedAt: moment().format('YYYY-MM-DD HH:mm:ss')
-			};
-			ep(payload);
-			return state;
+			});
 		},
 		removePost(state, { payload }) {
 			const { bid, pid } = payload;
-			delete state[bid][pid];
 			rp(bid, pid);
-			return state;
 		}
 	}
 });
