@@ -4,6 +4,7 @@ import {RootState} from "../store/reducers/reducers";
 import {login, logout} from "../apis/firebase";
 import Loading from "./common/Loading";
 import UserInformation from "./common/UserInformation";
+import Button from "./ui/Button";
 
 export default function LoginUser() {
 	const user = useSelector((state: RootState) => state.auth.user);
@@ -17,7 +18,7 @@ export default function LoginUser() {
 			{
 				user && <UserInformation {...user} />
 			}
-			<button className="px-4 py-1 rounded bg-amber-100 hover:bg-amber-200" onClick={user ? logout : login}>{user ? 'Logout' : 'Login'}</button>
+			<Button className="px-4 py-1" onClick={user ? logout : login}>{user ? 'Logout' : 'Login'}</Button>
 		</div>
 	);
 }
