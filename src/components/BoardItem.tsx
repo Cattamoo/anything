@@ -22,9 +22,9 @@ export default function BoardItem({ board, uid }: Props) {
 				<Title>{board.title}</Title>
 				{
 					uid && board.uid === uid && (
-							<Link to="/" onClick={handleRemove} title="삭제">
-								<BsTrash />
-							</Link>
+						<Link to="/" onClick={handleRemove} title="삭제">
+							<BsTrash />
+						</Link>
 					)
 				}
 			</Link>
