@@ -30,7 +30,7 @@ export default function BoardEditForm({ board }: Props) {
 	}
 
 	return (
-		<form className="flex flex-col gap-2 mt-2" onSubmit={handleSubmit}>
+		<form className="flex flex-col gap-2 mt-2 px-1" onSubmit={handleSubmit}>
 			<Input placeholder="게시판 제목" name="title" value={titleText} onChange={({target}) => setTitleText(target.value)} />
 			<div>
 				<input id="isPublic" type="checkbox" checked={isPublic} onChange={({target}) => setIsPublic(target.checked)} />
