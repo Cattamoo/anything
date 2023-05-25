@@ -21,9 +21,9 @@ export default function BoardItem({ board, uid }: Props) {
 				<h2 className="text-xl font-bold">{board.title}</h2>
 				{
 					uid && board.uid === uid && (
-							<button onClick={handleRemove} title="삭제">
+							<Link to="/" onClick={handleRemove} title="삭제">
 								<BsTrash />
-							</button>
+							</Link>
 					)
 				}
 			</Link>
