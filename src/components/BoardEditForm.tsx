@@ -41,7 +41,7 @@ export default function BoardEditForm({ board }: Props) {
 			</div>
 			*/}
 			<Button disabled={titleText === ''}>저장</Button>
-			<Button className="bg-zinc-100 hover:bg-zinc-200" onClick={() => navigate(-1)}>취소</Button>
+			<Button type="button" className="bg-zinc-100 hover:bg-zinc-200" onClick={() => navigate(-1)}>취소</Button>
 		</form>
 	);
 }
