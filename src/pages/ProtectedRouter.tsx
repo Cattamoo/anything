@@ -1,7 +1,8 @@
 import React from 'react';
+import {Navigate, useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {RootState} from "../store/reducers/reducers";
-import {Navigate, useParams} from "react-router-dom";
+import Loading from "../components/common/Loading";
 
 type Props = {
 	children: React.ReactNode;
@@ -14,7 +15,11 @@ export default function ProtectedRouter({ children }: Props) {
 		boards: state.boards
 	}));
 
-	if(!user || (bid && !(boards[bid].isPublic || boards[bid].user.includes(user.uid)))) {
+	if(user === undefined || Object.values(boards).length === 0) {
+		return <Loading />
+	}
+
+	if(!user || !boards[bid!] || !(boards[bid!].isPublic || boards[bid!].user.includes(user.uid))) {
 		return <Navigate to="/" replace />
 	}
 
