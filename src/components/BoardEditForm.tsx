@@ -37,6 +37,7 @@ export default function BoardEditForm({ board }: Props) {
 				<label className="ml-1" htmlFor="isPublic">공개 게시판으로 설정합니다. (optional)</label>
 			</div>
 			<Button disabled={titleText === ''}>저장</Button>
+			<Button className="bg-zinc-100 hover:bg-zinc-200" onClick={() => navigate(-1)}>취소</Button>
 		</form>
 	);
 }
