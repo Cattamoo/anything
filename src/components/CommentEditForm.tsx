@@ -1,22 +1,30 @@
 import React, {FormEventHandler, useState} from 'react';
 import {useDispatch} from "react-redux";
-import {createComment} from "../store/reducers/commentReducer";
+import {createComment, editComment} from "../store/reducers/commentReducer";
+import {Comment} from "../types/dataType";
 import TextArea from "./ui/TextArea";
 import Button from "./ui/Button";
 
 type Props = {
 	pid: string;
 	uid: string;
+	comment?: Comment;
+	callback?: Function;
 }
 
-export default function CommentEditForm({ pid, uid }: Props) {
+export default function CommentEditForm({ pid, uid, comment, callback = () => {} }: Props) {
 	const dispatch = useDispatch();
-	const [commentText, setCommentText] = useState('');
+	const [commentText, setCommentText] = useState(comment ? comment.content : '');
 
 	const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
 		e.preventDefault();
-		dispatch(createComment({ pid, uid, content: commentText }));
-		resetInput();
+		if(comment) {
+			dispatch(editComment({...comment, content: commentText}));
+			callback();
+		} else {
+			dispatch(createComment({ pid, uid, content: commentText }));
+			resetInput();
+		}
 	}
 
 	const resetInput = () => {

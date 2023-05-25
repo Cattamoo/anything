@@ -1,9 +1,9 @@
 import React from 'react';
 import {useSelector} from "react-redux";
+import moment from "moment";
 import {RootState} from "../store/reducers/reducers";
 import CommentEditForm from "./CommentEditForm";
 import Comment from "./Comment";
-import moment from "moment";
 
 type Props = {
 	pid: string;
@@ -21,7 +21,7 @@ export default function CommentWrapper({ pid, uid }: Props) {
 						Object
 							.values(comments)
 							.sort((a, b) => moment(a.createdAt).isBefore(b.createdAt) ? 1 : -1)
-							.map((comment) => <Comment key={comment.cid} {...comment} />)
+							.map((comment) => <Comment key={comment.cid} comment={comment} />)
 					)
 				}
 			</ul>

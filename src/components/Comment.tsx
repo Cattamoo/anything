@@ -1,36 +1,54 @@
-import React from 'react';
-import {Comment as CommentType} from "../types/dataType";
+import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../store/reducers/reducers";
-import UserInformation from "./common/UserInformation";
-import {FaTrash} from "react-icons/fa";
 import {removeComment} from "../store/reducers/commentReducer";
+import {Comment as CommentType} from "../types/dataType";
+import UserInformation from "./common/UserInformation";
+import CommentEditForm from "./CommentEditForm";
+import {FaEdit, FaTrash} from "react-icons/fa";
 
-type Props = CommentType;
+type Props = { comment: CommentType };
 
-export default function Comment({ uid, pid, cid, content, createdAt }: Props) {
+export default function Comment({ comment }: Props) {
 	const dispatch = useDispatch();
+	const { uid, pid, cid, content, updatedAt } = comment;
 	const { login_uid, user } = useSelector((state: RootState) => ({
 		user: state.users[uid],
 		login_uid: state.auth.user?.uid,
 	}));
+	const [editMode, setEditMode] = useState(false);
+
+	const handleToggleEditMode = () => {
+		setEditMode((prevState) => !prevState);
+	}
 
 	const handleRemove = () => {
 		dispatch(removeComment({ pid, cid }))
 	}
 
 	return (
-		<li className="relative px-4 py-2 bg-white shadow">
-			<div className="flex justify-between">
+		<li className="px-4 py-2 bg-white shadow">
+			<div className="flex items-center justify-between pb-2">
 				{user && <UserInformation {...user} />}
-				<div className="text-xs">{createdAt}</div>
+				<div className="flex gap-4">
+					{
+						login_uid === uid && (
+							<div className="flex gap-2 text-right">
+								<button onClick={handleToggleEditMode}><FaEdit /></button>
+								<button onClick={handleRemove}><FaTrash /></button>
+							</div>
+						)
+					}
+					<div className="text-xs text-zinc-600">{updatedAt}</div>
+				</div>
 			</div>
-			<div>{content}</div>
 			{
-				login_uid === uid && (
-					<div className="absolute right-0 top-1/2 -translate-y-2/4 mr-4">
-						<button onClick={handleRemove}><FaTrash /></button>
-					</div>
+				editMode
+					? <CommentEditForm pid={pid} uid={login_uid!} comment={comment} callback={handleToggleEditMode} />
+					: (
+					<p className="py-2 select-text whitespace-pre-line">
+						{content}
+					</p>
 				)
 			}
 		</li>
