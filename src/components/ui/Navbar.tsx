@@ -4,7 +4,7 @@ import {BsHouseFill, BsJournalPlus} from "react-icons/bs";
 
 export default function Navbar() {
 	return (
-		<nav className="flex-1 flex justify-center gap-2">
+		<nav className="flex-1 flex md:justify-center gap-2">
 			<Link to="/" className="text-xl font-bold">
 				<BsHouseFill />
 			</Link>
