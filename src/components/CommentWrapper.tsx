@@ -1,7 +1,7 @@
 import React from 'react';
 import {useSelector} from "react-redux";
 import {RootState} from "../store/reducers/reducers";
-import CommentInputForm from "./CommentInputForm";
+import CommentEditForm from "./CommentEditForm";
 import Comment from "./Comment";
 import moment from "moment";
 
@@ -14,7 +14,7 @@ export default function CommentWrapper({ pid, uid }: Props) {
 	const comments = useSelector((state: RootState) => state.comments[pid]);
 	return (
 		<div>
-			<CommentInputForm pid={pid} uid={uid} />
+			<CommentEditForm pid={pid} uid={uid} />
 			<ul>
 				{
 					comments && (

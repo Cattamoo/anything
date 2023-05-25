@@ -7,7 +7,7 @@ type Props = {
 	uid: string;
 }
 
-export default function CommentInputForm({ pid, uid }: Props) {
+export default function CommentEditForm({ pid, uid }: Props) {
 	const dispatch = useDispatch();
 	const [commentText, setCommentText] = useState('');
 
