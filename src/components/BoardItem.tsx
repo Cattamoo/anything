@@ -17,17 +17,17 @@ export default function BoardItem({ board, uid }: Props) {
 		dispatch(removeBoard({ id: board.bid }));
 	}
 	return (
-		<li className="w-full hover:bg-zinc-50 p-2">
-			<Link to={`/board/${board.bid}`} className="flex items-center gap-4">
+		<li className="w-full flex items-center gap-4 hover:bg-zinc-50 p-2">
+			<Link to={`/board/${board.bid}`}>
 				<Title>{board.title}</Title>
-				{
-					uid && board.uid === uid && (
-						<Link to="/" onClick={handleRemove} title="삭제">
-							<BsTrash />
-						</Link>
-					)
-				}
 			</Link>
+			{
+				uid && board.uid === uid && (
+					<button onClick={handleRemove} title="삭제">
+						<BsTrash />
+					</button>
+				)
+			}
 		</li>
 	);
 }
