@@ -1,6 +1,8 @@
 import React, {FormEventHandler, useState} from 'react';
 import {useDispatch} from "react-redux";
 import {createComment} from "../store/reducers/commentReducer";
+import TextArea from "./ui/TextArea";
+import Button from "./ui/Button";
 
 type Props = {
 	pid: string;
@@ -22,9 +24,9 @@ export default function CommentEditForm({ pid, uid }: Props) {
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<textarea value={commentText} onChange={({target}) => setCommentText(target.value)} />
-			<button disabled={commentText === ''}>저장</button>
+		<form className="flex gap-0.5" onSubmit={handleSubmit}>
+			<TextArea className="flex-1" placeholder="댓글을 입력해주세요." value={commentText} onChange={({target}) => setCommentText(target.value)} />
+			<Button className="px-4" disabled={commentText === ''}>저장</Button>
 		</form>
 	);
 }

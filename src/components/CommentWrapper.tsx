@@ -13,9 +13,9 @@ type Props = {
 export default function CommentWrapper({ pid, uid }: Props) {
 	const comments = useSelector((state: RootState) => state.comments[pid]);
 	return (
-		<div>
+		<div className="flex flex-col gap-6 mt-4 pt-4 px-2 pb-2 bg-zinc-50/50">
 			<CommentEditForm pid={pid} uid={uid} />
-			<ul>
+			<ul className="flex flex-col gap-4">
 				{
 					comments && (
 						Object

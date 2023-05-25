@@ -20,7 +20,7 @@ export default function Comment({ uid, pid, cid, content, createdAt }: Props) {
 	}
 
 	return (
-		<li className="relative px-4 py-2">
+		<li className="relative px-4 py-2 bg-white shadow">
 			<div className="flex justify-between">
 				{user && <UserInformation {...user} />}
 				<div className="text-xs">{createdAt}</div>
