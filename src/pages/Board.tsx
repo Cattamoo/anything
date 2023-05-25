@@ -27,7 +27,7 @@ export default function Board() {
 											<Link to={`/board/edit/${board.bid}`} title="수정">
 												<BsPencil />
 											</Link>
-											<Link to={`/board/${board.bid}`} title="초대">
+											<Link to={`/invite/${board.bid}`} title="초대">
 												<BsPersonAdd />
 											</Link>
 										</>

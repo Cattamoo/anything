@@ -12,10 +12,11 @@ import EditBoard from "./pages/EditBoard";
 import Post from "./pages/Post";
 import NewPost from "./pages/NewPost";
 import EditPost from "./pages/EditPost";
+import Invite from "./pages/Invite";
+import ProtectedRouter from "./pages/ProtectedRouter";
 
 import reportWebVitals from './reportWebVitals';
 import './index.css';
-import ProtectedRouter from "./pages/ProtectedRouter";
 
 const router = createBrowserRouter(
 	[
@@ -30,6 +31,7 @@ const router = createBrowserRouter(
 				{ path: '/post/:bid/:pid', element: <ProtectedRouter><Post /></ProtectedRouter> },
 				{ path: '/post/new/:bid', element: <ProtectedRouter><NewPost /></ProtectedRouter> },
 				{ path: '/post/edit/:bid/:pid', element: <ProtectedRouter><EditPost /></ProtectedRouter> },
+				{ path: '/invite/:bid', element: <ProtectedRouter><Invite /></ProtectedRouter> },
 			]
 		}
 	]
