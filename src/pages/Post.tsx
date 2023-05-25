@@ -9,6 +9,7 @@ import Loading from "../components/common/Loading";
 import CommentWrapper from "../components/CommentWrapper";
 import PageLayout from "../components/layout/PageLayout";
 import Title from "../components/ui/Title";
+import {removeConfirm} from "../utils/comfirm";
 
 export default function Post() {
 	const navigate = useNavigate();
@@ -17,8 +18,10 @@ export default function Post() {
 	const { uid, post, users } = useSelector((state: RootState) => ({ uid: state.auth.user?.uid, post: Object.values(state.posts).length !== 0 ? state.posts[bid!][pid!] : undefined, users: state.users }));
 
 	const handleRemove = () => {
-		dispatch(removePost({ bid, pid }));
-		navigate(`/board/${bid}`);
+		if(removeConfirm()) {
+			dispatch(removePost({ bid, pid }));
+			navigate(`/board/${bid}`);
+		}
 	}
 
 	return (

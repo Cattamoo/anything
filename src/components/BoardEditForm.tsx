@@ -6,6 +6,7 @@ import {createBoard, editBoard} from "../store/reducers/boardReducer";
 import {Board} from "../types/dataType";
 import Input from "./ui/Input";
 import Button from "./ui/Button";
+import {saveConfirm} from "../utils/comfirm";
 
 type Props = {
 	board?: Board;
@@ -22,12 +23,14 @@ export default function BoardEditForm({ board }: Props) {
 		e.preventDefault();
 		// TODO: Public Board 설정 임시로 막기
 		setIsPublic(false);
-		if(board) {
-			dispatch(editBoard({ ...board, title: titleText, isPublic }));
-			navigate(`/board/${board.bid}`);
-		} else {
-			dispatch(createBoard({ uid: user!.uid, title: titleText, isPublic }));
-			navigate(`/`);
+		if(saveConfirm()) {
+			if(board) {
+				dispatch(editBoard({ ...board, title: titleText, isPublic }));
+				navigate(`/board/${board.bid}`);
+			} else {
+				dispatch(createBoard({ uid: user!.uid, title: titleText, isPublic }));
+				navigate(`/`);
+			}
 		}
 	}
 

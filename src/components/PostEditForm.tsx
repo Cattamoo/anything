@@ -6,6 +6,7 @@ import {createPost, editPost} from "../store/reducers/postReducer";
 import Input from "./ui/Input";
 import TextArea from "./ui/TextArea";
 import Button from "./ui/Button";
+import {saveConfirm} from "../utils/comfirm";
 
 type Props = {
 	bid: string;
@@ -21,12 +22,14 @@ export default function PostEditForm({ bid, uid, post }: Props) {
 
 	const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
 		e.preventDefault();
-		if(post) {
-			dispatch(editPost({ ...post, title: titleText, content: contentText }));
-			navigate(`/post/${bid}/${post.pid}`);
-		} else {
-			dispatch(createPost({ bid, uid, title: titleText, content: contentText }));
-			navigate(`/board/${bid}`);
+		if(saveConfirm()) {
+			if(post) {
+				dispatch(editPost({ ...post, title: titleText, content: contentText }));
+				navigate(`/post/${bid}/${post.pid}`);
+			} else {
+				dispatch(createPost({ bid, uid, title: titleText, content: contentText }));
+				navigate(`/board/${bid}`);
+			}
 		}
 	}
 
