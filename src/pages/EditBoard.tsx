@@ -1,10 +1,11 @@
 import React from 'react';
-import BoardEditForm from "../components/BoardEditForm";
 import {useParams} from "react-router-dom";
-import Loading from "../components/common/Loading";
 import {useSelector} from "react-redux";
 import {RootState} from "../store/reducers/reducers";
 import PageLayout from "../components/layout/PageLayout";
+import Loading from "../components/common/Loading";
+import Title from "../components/ui/Title";
+import BoardEditForm from "../components/BoardEditForm";
 
 export default function EditBoard() {
 	const { id } = useParams();
@@ -12,7 +13,7 @@ export default function EditBoard() {
 
 	return (
 		<PageLayout>
-			EditBoard
+			<Title>게시판 수정</Title>
 			{boards[id!] ? <BoardEditForm board={boards[id!]} /> : <Loading />}
 		</PageLayout>
 	);

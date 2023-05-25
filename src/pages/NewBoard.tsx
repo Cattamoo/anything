@@ -1,11 +1,12 @@
 import React from 'react';
-import BoardEditForm from "../components/BoardEditForm";
 import PageLayout from "../components/layout/PageLayout";
+import Title from "../components/ui/Title";
+import BoardEditForm from "../components/BoardEditForm";
 
 export default function NewBoard() {
 	return (
 		<PageLayout>
-			NewBoard
+			<Title>게시판 추가</Title>
 			<BoardEditForm />
 		</PageLayout>
 	);

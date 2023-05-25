@@ -11,6 +11,6 @@ type Props = {
 
 export default function Input({ className = '', type = 'text', name = '', placeholder = '', value, onChange }: Props) {
 	return (
-		<input className={`${className}`} type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} />
+		<input className={`outline-none px-2 py-1 border-l-2 border-zinc-200 hover:border-amber-200 focus:border-amber-300 ${className}`} type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} />
 	);
 }
