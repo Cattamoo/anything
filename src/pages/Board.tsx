@@ -8,6 +8,7 @@ import Loading from "../components/common/Loading";
 import Title from "../components/ui/Title";
 import PostItem from "../components/PostItem";
 import {BsFilePlus, BsPencil, BsPersonAdd} from "react-icons/bs";
+import EmptyList from "../components/common/EmptyList";
 
 export default function Board() {
 	const { bid } = useParams();
@@ -16,8 +17,9 @@ export default function Board() {
 	return (
 		<PageLayout>
 			{
-				board
-					? (
+				board === undefined
+					? <Loading />
+					: (
 						<>
 							<Title className="flex items-center gap-2 py-2 px-1">
 								{ board.title }
@@ -43,17 +45,18 @@ export default function Board() {
 							</Title>
 							<ul className="flex flex-col gap-2">
 								{
-									posts && (
-										Object
-											.values(posts)
-											.sort((a, b) => moment(a.createdAt).isBefore(b.createdAt) ? 1 : -1)
-											.map((post) => <PostItem key={post.pid} {...post} />)
-									)
+									posts
+										? (
+											Object
+												.values(posts)
+												.sort((a, b) => moment(a.createdAt).isBefore(b.createdAt) ? 1 : -1)
+												.map((post) => <PostItem key={post.pid} {...post} />)
+										)
+										: <EmptyList />
 								}
 							</ul>
 						</>
 					)
-					: <Loading />
 			}
 		</PageLayout>
 	);
