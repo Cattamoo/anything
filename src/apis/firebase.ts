@@ -84,6 +84,7 @@ export function editBoard(board: Board) {
 
 export function removeBoard(id: string) {
 	removeDB(`board/${id}`);
+	removeDB(`post/${id}`);
 }
 
 export function getPosts(callback: Function) {
@@ -100,6 +101,7 @@ export function editPost(post: Post) {
 
 export function removePost(bid: string, pid: string) {
 	removeDB(`post/${bid}/${pid}`);
+	removeDB(`comment/${pid}`);
 }
 
 export function getComments(callback: Function) {
