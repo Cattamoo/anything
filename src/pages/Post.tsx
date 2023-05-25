@@ -8,6 +8,7 @@ import {FaArrowLeft, FaPenSquare, FaTrash} from "react-icons/fa";
 import Loading from "../components/common/Loading";
 import CommentWrapper from "../components/CommentWrapper";
 import PageLayout from "../components/layout/PageLayout";
+import Title from "../components/ui/Title";
 
 export default function Post() {
 	const navigate = useNavigate();
@@ -27,7 +28,7 @@ export default function Post() {
 					? (
 						<>
 							<div className="relative flex flex-col items-center mt-4 pb-2 mb-2 shadow-[0_5px_10px_-3px_#d0d0cf]">
-								<h2 className="text-xl font-bold">{post.title}</h2>
+								<Title>{post.title}</Title>
 								<UserInformation {...users[post.uid]} />
 								<div className="text-xs">
 									<div>생성일자: {post.createdAt}</div>

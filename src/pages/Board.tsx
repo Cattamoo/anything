@@ -5,6 +5,7 @@ import moment from "moment/moment";
 import {RootState} from "../store/reducers/reducers";
 import PageLayout from "../components/layout/PageLayout";
 import Loading from "../components/common/Loading";
+import Title from "../components/ui/Title";
 import PostItem from "../components/PostItem";
 import {BsFilePlus, BsPencil, BsPersonAdd} from "react-icons/bs";
 
@@ -18,7 +19,7 @@ export default function Board() {
 				board
 					? (
 						<>
-							<h2 className="flex items-center text-xl font-bold gap-2 py-2 px-1">
+							<Title className="flex items-center gap-2 py-2 px-1">
 								{ board.title }
 								{
 									uid === board.uid && (
@@ -39,7 +40,7 @@ export default function Board() {
 										</Link>
 									)
 								}
-							</h2>
+							</Title>
 							<ul className="flex flex-col gap-2">
 								{
 									posts && (
