@@ -12,7 +12,7 @@ import EditBoard from "./pages/EditBoard";
 import Post from "./pages/Post";
 import NewPost from "./pages/NewPost";
 import EditPost from "./pages/EditPost";
-import Invite from "./pages/Invite";
+import UserSetting from "./pages/UserSetting";
 import ProtectedRouter from "./pages/ProtectedRouter";
 
 import reportWebVitals from './reportWebVitals';
