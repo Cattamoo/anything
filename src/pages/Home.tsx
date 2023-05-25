@@ -2,12 +2,13 @@ import React from 'react';
 import {useSelector} from "react-redux";
 import {RootState} from "../store/reducers/reducers";
 import BoardItem from "../components/BoardItem";
+import PageLayout from "../components/layout/PageLayout";
 
 export default function Home() {
 	const { user, boards } = useSelector((state: RootState) => ({ user: state.auth.user, boards: state.boards }));
 
 	return (
-		<div>
+		<PageLayout>
 			Home
 			{
 				user && Object.keys(boards)
@@ -16,6 +17,6 @@ export default function Home() {
 						<BoardItem key={key} uid={user!.uid} board={boards[key]} />
 					))
 			}
-		</div>
+		</PageLayout>
 	);
 }

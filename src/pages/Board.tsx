@@ -6,18 +6,19 @@ import Loading from "../components/common/Loading";
 import PostItem from "../components/PostItem";
 import {BsFilePlus} from "react-icons/bs";
 import moment from "moment/moment";
+import PageLayout from "../components/layout/PageLayout";
 
 export default function Board() {
 	const { id } = useParams();
 	const { uid, board, posts } = useSelector((state: RootState) => ({ uid: state.auth.user?.uid, board: state.boards[id!], posts: state.posts[id!] }));
 
 	return (
-		<div>
+		<PageLayout>
 			{
 				board
 					? (
 						<>
-							<h2 className="flex items-center text-lg font-bold gap-2">
+							<h2 className="flex items-center text-xl font-bold gap-2 p-2">
 								{ board.title }
 								{
 									uid && board.user.includes(uid) && (
@@ -41,6 +42,6 @@ export default function Board() {
 					)
 					: <Loading />
 			}
-		</div>
+		</PageLayout>
 	);
 }

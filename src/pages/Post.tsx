@@ -7,6 +7,7 @@ import UserInformation from "../components/common/UserInformation";
 import {FaArrowLeft, FaPenSquare, FaTrash} from "react-icons/fa";
 import Loading from "../components/common/Loading";
 import CommentWrapper from "../components/CommentWrapper";
+import PageLayout from "../components/layout/PageLayout";
 
 export default function Post() {
 	const navigate = useNavigate();
@@ -20,7 +21,7 @@ export default function Post() {
 	}
 
 	return (
-		<div>
+		<PageLayout>
 			{
 				post
 					? (
@@ -50,6 +51,6 @@ export default function Post() {
 					)
 					: <Loading />
 			}
-		</div>
+		</PageLayout>
 	);
 }
