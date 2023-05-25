@@ -31,7 +31,7 @@ const router = createBrowserRouter(
 				{ path: '/post/:bid/:pid', element: <ProtectedRouter><Post /></ProtectedRouter> },
 				{ path: '/post/new/:bid', element: <ProtectedRouter><NewPost /></ProtectedRouter> },
 				{ path: '/post/edit/:bid/:pid', element: <ProtectedRouter><EditPost /></ProtectedRouter> },
-				{ path: '/invite/:bid', element: <ProtectedRouter><Invite /></ProtectedRouter> },
+				{ path: '/board/user/:bid', element: <ProtectedRouter><UserSetting /></ProtectedRouter> },
 			]
 		}
 	]
