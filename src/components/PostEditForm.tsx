@@ -34,7 +34,7 @@ export default function PostEditForm({ bid, uid, post }: Props) {
 		<form className="flex flex-col gap-2 mt-2 px-1" onSubmit={handleSubmit}>
 			<Input placeholder="제목" name="title" value={titleText} onChange={({target}) => setTitleText(target.value)} />
 			<TextArea className="h-96" placeholder="내용" name="content" value={contentText} onChange={({target}) => setContentText(target.value)} />
-			<Button disabled={titleText === '' && contentText === ''}>저장</Button>
+			<Button disabled={titleText === '' || contentText === ''}>저장</Button>
 		</form>
 	);
 }
