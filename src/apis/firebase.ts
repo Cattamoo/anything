@@ -77,6 +77,10 @@ export function setUserNickname(uid: string, nickname: string) {
 	writeDB(`user/${uid}/nickname`, nickname);
 }
 
+export function setUserProfile(uid: string, profile: string) {
+	writeDB(`user/${uid}/profile`, profile);
+}
+
 export function getBoards(callback: Function) {
 	return readDB('board', callback);
 }

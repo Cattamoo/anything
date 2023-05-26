@@ -4,6 +4,7 @@ export interface UserType {
 	photoURL: string;
 	uid: string;
 	nickname?: string;
+	profile?: string;
 }
 
 export type AuthState = {
