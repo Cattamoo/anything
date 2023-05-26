@@ -1,5 +1,7 @@
 # ANYTHING
 
+<img width="373" alt="image" src="https://github.com/Cattamoo/anything/assets/87294942/d10da8f4-bc72-4bde-9a01-9f0e0cff513f">
+
 ## 목표 🏆
 
 - Redux와 firebase를 사용한 게시판 구현
