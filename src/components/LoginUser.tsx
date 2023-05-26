@@ -8,7 +8,7 @@ import UserInformation from "./common/UserInformation";
 import Button from "./ui/Button";
 
 export default function LoginUser() {
-	const user = useSelector((state: RootState) => state.auth.user);
+	const user = useSelector((state: RootState) => state.auth.user && state.users[state.auth.user.uid]);
 
 	if(user === undefined) {
 		return <Loading className="my-2 mr-14 text-zinc-500" />

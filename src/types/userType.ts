@@ -3,6 +3,7 @@ export interface UserType {
 	email: string;
 	photoURL: string;
 	uid: string;
+	nickname?: string;
 }
 
 export type AuthState = {
