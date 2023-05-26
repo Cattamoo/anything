@@ -67,7 +67,10 @@ export function getUsers(callback: Function) {
 
 function setUser(user: User) {
 	const { uid, displayName, photoURL, email } = user;
-	writeDB(`user/${user.uid}`, { uid, displayName, photoURL, email });
+	writeDB(`user/${user.uid}/uid`, uid);
+	writeDB(`user/${user.uid}/displayName`, displayName);
+	writeDB(`user/${user.uid}/photoURL`, photoURL);
+	writeDB(`user/${user.uid}/email`, email);
 }
 
 export function getBoards(callback: Function) {

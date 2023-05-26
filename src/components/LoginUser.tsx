@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {RootState} from "../store/reducers/reducers";
 import {login, logout} from "../apis/firebase";
@@ -16,7 +17,7 @@ export default function LoginUser() {
 	return (
 		<div className="flex items-center gap-4">
 			{
-				user && <UserInformation {...user} />
+				user && <Link to="/user"><UserInformation {...user} /></Link>
 			}
 			<Button className="px-4 py-1" onClick={user ? logout : login}>{user ? 'Logout' : 'Login'}</Button>
 		</div>

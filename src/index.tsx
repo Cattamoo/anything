@@ -12,6 +12,7 @@ import EditBoard from "./pages/EditBoard";
 import Post from "./pages/Post";
 import NewPost from "./pages/NewPost";
 import EditPost from "./pages/EditPost";
+import BoardUserSetting from "./pages/BoardUserSetting";
 import UserSetting from "./pages/UserSetting";
 import ProtectedRouter from "./pages/ProtectedRouter";
 
@@ -31,7 +32,8 @@ const router = createBrowserRouter(
 				{ path: '/post/:bid/:pid', element: <ProtectedRouter><Post /></ProtectedRouter> },
 				{ path: '/post/new/:bid', element: <ProtectedRouter><NewPost /></ProtectedRouter> },
 				{ path: '/post/edit/:bid/:pid', element: <ProtectedRouter><EditPost /></ProtectedRouter> },
-				{ path: '/board/user/:bid', element: <ProtectedRouter><UserSetting /></ProtectedRouter> },
+				{ path: '/board/user/:bid', element: <ProtectedRouter><BoardUserSetting /></ProtectedRouter> },
+				{ path: '/user', element: <ProtectedRouter><UserSetting /></ProtectedRouter> },
 			]
 		}
 	]
