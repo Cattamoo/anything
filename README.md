@@ -1,6 +1,6 @@
 # ANYTHING
 
-<img width="373" alt="image" src="https://github.com/Cattamoo/anything/assets/87294942/d10da8f4-bc72-4bde-9a01-9f0e0cff513f">
+<img width="373" alt="image" src="https://github.com/Cattamoo/anything/assets/87294942/01b417fd-5271-4c0d-9249-e9e0a49068b9">
 
 ## 목표 🏆
 
